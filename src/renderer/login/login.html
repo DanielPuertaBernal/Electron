@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Iniciar sesión</title>
+		<link rel="stylesheet" href="./login.css" />
+	</head>
+	<body>
+			<div class="login-container">
+				<!-- PANEL DERECHO - FORMULARIO -->
+				<main class="login-panel-derecho">
+				<div class="form-container">
+					<h2>Inicia sesión</h2>
+					<p class="descripcion">Ingresa tus credenciales para acceder al panel.</p>
+
+					<form id="loginForm" class="login-form" autocomplete="on">
+						<div class="form-group">
+							<label for="nombreUsuario">Usuario</label>
+							<input id="nombreUsuario" name="nombreUsuario" type="text" placeholder="usuario" autocomplete="username" />
+						</div>
+
+						<div class="form-group password-input-wrapper">
+							<label for="contrasena">Contraseña</label>
+							<input id="contrasena" name="contrasena" type="password" placeholder="contraseña" autocomplete="current-password" />
+							<button type="button" id="togglePassword" class="toggle-password" aria-label="Mostrar contraseña">
+								<!-- eye icon -->
+								<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+									<circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+							</button>
+						</div>
+
+						<div class="form-options">
+							<label class="checkbox-container">
+								<input id="recordarme" type="checkbox" />
+								<span class="checkmark" aria-hidden="true"></span>
+								Recordarme
+							</label>
+
+							<div>
+								<button id="btnLogin" class="btn-login" type="submit">
+									<span class="btn-text">Entrar</span>
+									<span class="btn-loader" style="display:none;">
+										<!-- spinner -->
+										<svg class="spinner" viewBox="0 0 50 50" width="20" height="20" aria-hidden="true">
+											<circle cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+										</svg>
+									</span>
+								</button>
+							</div>
+						</div>
+
+									<div id="mensaje" class="mensaje" style="display:none;" role="status" aria-live="polite"></div>
+					</form>
+				</div>
+			</main>
+		</div>
+
+		<script src="./login.js"></script>
+	</body>
+</html>

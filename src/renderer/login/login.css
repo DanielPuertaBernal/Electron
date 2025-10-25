@@ -1,0 +1,494 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primario: #3b82f6;
+    --color-primario-hover: #2563eb;
+    --color-secundario: #8b5cf6;
+    --color-exito: #10b981;
+    --color-error: #ef4444;
+    --color-warning: #f59e0b;
+    
+    --bg-principal: #0f172a;
+    --bg-secundario: #1e293b;
+    --bg-terciario: #334155;
+    
+    --texto-principal: #f1f5f9;
+    --texto-secundario: #94a3b8;
+    --texto-terciario: #64748b;
+    
+    --border-radius: 12px;
+    --border-color: #334155;
+    
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: var(--texto-principal);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* ============================================
+   CONTAINER PRINCIPAL
+   ============================================ */
+
+.login-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 95%;
+    max-width: 1200px;
+    height: 90vh;
+    max-height: 800px;
+    background: var(--bg-secundario);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   PANEL IZQUIERDO - BRANDING
+   ============================================ */
+
+.login-panel-izquierdo {
+    background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-secundario) 100%);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-panel-izquierdo::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.branding {
+    position: relative;
+    z-index: 1;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 2rem;
+    color: white;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.branding h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.subtitulo {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+}
+
+.caracteristicas {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.caracteristica {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: var(--transition);
+}
+
+.caracteristica:hover {
+    transform: translateX(5px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.caracteristica .icono {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+.caracteristica h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+.caracteristica p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================
+   PANEL DERECHO - FORMULARIO
+   ============================================ */
+
+.login-panel-derecho {
+    background: var(--bg-principal);
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-container h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--texto-principal);
+}
+
+.descripcion {
+    color: var(--texto-secundario);
+    margin-bottom: 2rem;
+}
+
+/* ============================================
+   FORMULARIO
+   ============================================ */
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--texto-principal);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-group label svg {
+    width: 18px;
+    height: 18px;
+    color: var(--color-primario);
+}
+
+.form-group input {
+    padding: 0.875rem 1rem;
+    background: var(--bg-secundario);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--texto-principal);
+    font-size: 1rem;
+    transition: var(--transition);
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: var(--color-primario);
+    background: var(--bg-terciario);
+}
+
+.form-group input::placeholder {
+    color: var(--texto-terciario);
+}
+
+.password-input-wrapper {
+    position: relative;
+}
+
+.password-input-wrapper input {
+    padding-right: 3rem;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--texto-terciario);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.toggle-password:hover {
+    color: var(--color-primario);
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--texto-secundario);
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    background: var(--bg-secundario);
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    margin-right: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background: var(--color-primario);
+    border-color: var(--color-primario);
+}
+
+.checkbox-container input:checked ~ .checkmark::after {
+    content: '✓';
+    color: white;
+    font-size: 0.875rem;
+}
+
+/* ============================================
+   MENSAJES
+   ============================================ */
+
+.mensaje {
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.mensaje.exito {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--color-exito);
+    color: var(--color-exito);
+}
+
+.mensaje.error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid var(--color-error);
+    color: var(--color-error);
+}
+
+/* ============================================
+   BOTÓN
+   ============================================ */
+
+.btn-login {
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-secundario) 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-login::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+}
+
+.btn-login:hover::before {
+    left: 100%;
+}
+
+.btn-login:active {
+    transform: translateY(0);
+}
+
+.btn-login:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+    width: 20px;
+    height: 20px;
+}
+
+.spinner circle {
+    stroke: white;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+    }
+    100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+    }
+}
+
+/* ============================================
+   INFO CREDENCIALES
+   ============================================ */
+
+.info-credenciales {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: var(--bg-secundario);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.info-credenciales p {
+    font-size: 0.85rem;
+    color: var(--texto-secundario);
+    margin-bottom: 0.5rem;
+}
+
+.info-credenciales code {
+    background: var(--bg-terciario);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    color: var(--color-primario);
+    font-family: 'Courier New', monospace;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 968px) {
+    .login-container {
+        grid-template-columns: 1fr;
+        height: auto;
+        max-height: none;
+    }
+
+    .login-panel-izquierdo {
+        display: none;
+    }
+
+    .login-panel-derecho {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .login-panel-derecho {
+        padding: 1.5rem;
+    }
+}

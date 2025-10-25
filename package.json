@@ -1,16 +1,26 @@
 {
   "name": "electron",
   "version": "1.0.0",
-  "description": "Repositorio que contiene la logical de una práctica con el framework de Electron.",
-  "main": "index.js",
+  "description": "Sistema de autenticación con Electron y PostgreSQL",
+  "main": "src/main/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DanielPuertaBernal/Electron.git"
   },
-  "keywords": [],
+  "keywords": [
+    "electron",
+    "postgresql",
+    "jwt",
+    "authentication"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
@@ -28,6 +38,9 @@
     "wait-on": "^9.0.1"
   },
   "dependencies": {
-    "pg": "^8.16.3"
+    "pg": "^8.16.3",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "dotenv": "^16.3.1"
   }
 }
