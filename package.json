@@ -1,0 +1,30 @@
+{
+  "name": "electron",
+  "version": "1.0.0",
+  "description": "Repositorio que contiene la logical de una práctica con el framework de Electron.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielPuertaBernal/Electron.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DanielPuertaBernal/Electron/issues"
+  },
+  "homepage": "https://github.com/DanielPuertaBernal/Electron#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "electron": "^38.4.0",
+    "electron-builder": "^26.0.12",
+    "electron-devtools-installer": "^4.0.0",
+    "electron-reload": "^2.0.0-alpha.1",
+    "vite": "^7.1.12",
+    "wait-on": "^9.0.1"
+  }
+}
