@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const auth = require('./auth');
+const pool = require('./database');
 
 let mainWindow;
 
@@ -61,6 +62,18 @@ ipcMain.handle('usuarios:actualizar', async (event, idUsuario, datosUsuario, tok
 
 ipcMain.handle('usuarios:eliminar', async (event, idUsuario, token) => {
   return await auth.eliminarUsuario(idUsuario, token);
+});
+
+// IPC: Obtener roles (para poblar selects en UI)
+ipcMain.handle('roles:obtener', async (event, token) => {
+  try {
+    // opcional: podríamos verificar token y permisos si es necesario
+    const result = await pool.query('SELECT idRol, nombreRol FROM roles ORDER BY nombreRol');
+    return { success: true, roles: result.rows };
+  } catch (error) {
+    console.error('Error al obtener roles:', error);
+    return { success: false, message: 'Error al obtener roles' };
+  }
 });
 
 // ============================================

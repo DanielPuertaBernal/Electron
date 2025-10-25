@@ -21,6 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
     loginForm.addEventListener('submit', manejarLogin);
     togglePasswordBtn.addEventListener('click', togglePassword);
 
+    // Alinear el icono del toggle verticalmente con el input (mejora visual)
+    alignToggle();
+    window.addEventListener('resize', alignToggle);
+
     // Focus en el primer input
     nombreUsuarioInput.focus();
 });
@@ -44,6 +48,17 @@ async function verificarSesionActiva() {
             window.electronAPI.storage.limpiar();
         }
     }
+}
+
+// Alinear el icono del ojo con el centro del input de contraseña
+function alignToggle(){
+    if (!togglePasswordBtn || !contrasenaInput) return;
+    // obtener la posición relativa del input dentro del wrapper
+    const wrapper = document.querySelector('.password-input-wrapper');
+    if (!wrapper) return;
+    const top = contrasenaInput.offsetTop + contrasenaInput.offsetHeight/2;
+    // establecer top en px para que esté centrado respecto al input
+    togglePasswordBtn.style.top = `${top}px`;
 }
 
 // ============================================
@@ -150,16 +165,16 @@ function togglePassword() {
     const tipo = contrasenaInput.type === 'password' ? 'text' : 'password';
     contrasenaInput.type = tipo;
 
-    // Cambiar icono
+    // Cambiar icono (ojo / ojo tachado)
     const icono = togglePasswordBtn.querySelector('svg');
+    const eyeOpen = `<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`;
+    const eyeClosed = `<path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-6 0-10-7-10-7a19.66 19.66 0 0 1 4.11-5.06" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M1 1l22 22" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`;
     if (tipo === 'text') {
-        icono.innerHTML = `
-            
-        `;
+        icono.innerHTML = eyeClosed;
+        togglePasswordBtn.setAttribute('aria-label', 'Ocultar contraseña');
     } else {
-        icono.innerHTML = `
-            
-        `;
+        icono.innerHTML = eyeOpen;
+        togglePasswordBtn.setAttribute('aria-label', 'Mostrar contraseña');
     }
 }
 

@@ -43,7 +43,7 @@ body {
 
 .login-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     width: 95%;
     max-width: 1200px;
     height: 90vh;
@@ -70,49 +70,14 @@ body {
    PANEL IZQUIERDO - BRANDING
    ============================================ */
 
-.login-panel-izquierdo {
-    background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-secundario) 100%);
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
-}
 
-.login-panel-izquierdo::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-    animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
 
 .branding {
     position: relative;
     z-index: 1;
 }
 
-.logo {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 2rem;
-    color: white;
-    animation: pulse 2s ease-in-out infinite;
-}
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
 
 .branding h1 {
     font-size: 2.5rem;
@@ -281,6 +246,12 @@ body {
 .toggle-password:hover {
     color: var(--color-primario);
 }
+
+/* Ensure svg sits perfectly centered inside the toggle button */
+.toggle-password svg{display:block;width:20px;height:20px}
+
+/* Decorative animated bubbles on the left panel */
+.toggle-password svg{display:block;width:20px;height:20px}
 
 .form-options {
     display: flex;

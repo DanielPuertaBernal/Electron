@@ -1,11 +1,9 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
-// Exponer API segura al proceso de renderizado
+// Exponer API segura al renderer
 contextBridge.exposeInMainWorld('electronAPI', {
-  
-  // ============================================
+
   // AUTH API
-  // ============================================
   auth: {
     login: (nombreUsuario, contrasena) => 
       ipcRenderer.invoke('auth:login', nombreUsuario, contrasena),
@@ -17,9 +15,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
       ipcRenderer.invoke('auth:logout')
   },
 
-  // ============================================
-  // USUARIOS API
-  // ============================================
+  // Usuarios API
+  // CRUD para usuarios (registrar, obtener, actualizar, eliminar)
+
   usuarios: {
     registrar: (datosUsuario, token) => 
       ipcRenderer.invoke('usuarios:registrar', datosUsuario, token),
@@ -34,17 +32,24 @@ contextBridge.exposeInMainWorld('electronAPI', {
       ipcRenderer.invoke('usuarios:eliminar', idUsuario, token)
   },
 
-  // ============================================
-  // NAVEGACIÓN API
-  // ============================================
+  // Roles API
+  // Obtener la lista de roles (roles:obtener)
+
+  roles: {
+    obtener: (token) => ipcRenderer.invoke('roles:obtener', token)
+  },
+
+  // Navegación
+  // Cargar páginas en la ventana principal
+
   navegacion: {
     irA: (pagina) => 
       ipcRenderer.invoke('navegacion:cargarPagina', pagina)
   },
 
-  // ============================================
-  // STORAGE API (localStorage wrapper)
-  // ============================================
+  // Storage (localStorage wrapper)
+  // Métodos: guardar, obtener, eliminar, limpiar
+
   storage: {
     guardar: (clave, valor) => {
       localStorage.setItem(clave, JSON.stringify(valor));

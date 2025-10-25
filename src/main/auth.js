@@ -76,11 +76,17 @@ async function registrarUsuario(datosUsuario, tokenAdmin) {
       return { success: false, message: 'No autorizado' };
     }
 
+    // Validación básica del email antes de intentar insertar en la BD
+    if (!datosUsuario.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(datosUsuario.email)) {
+      return { success: false, message: 'Email con formato inválido' };
+    }
+
     const contrasenaHash = await bcrypt.hash(datosUsuario.contrasena, SALT_ROUNDS);
 
     // Obtener idRol
     const rolResult = await pool.query(
-      'SELECT idRol FROM roles WHERE nombreRol = $1',
+      // Buscar rol de forma case-insensitive para evitar errores por mayúsculas/minúsculas
+      'SELECT idRol FROM roles WHERE LOWER(nombreRol) = LOWER($1)',
       [datosUsuario.rol]
     );
 
