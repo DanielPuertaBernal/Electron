@@ -1,0 +1,17 @@
+:root{--bg:#071027;--card:#0b1220;--accent:#3b82f6;--text:#e6eef8;--muted:#94a3b8}
+body{margin:0;font-family:Inter, system-ui, -apple-system,'Segoe UI',Roboto,Arial;background:linear-gradient(180deg,var(--bg),#02111b);color:var(--text)}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid rgba(255,255,255,0.03)}
+.container{max-width:900px;margin:28px auto;padding:20px}
+.perfil{background:rgba(255,255,255,0.02);padding:18px;border-radius:10px}
+.campo{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.02)}
+.campo .label{color:var(--muted)}
+.campo .valor{font-weight:600}
+.btn{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;cursor:pointer}
+.btn.primary{background:var(--accent);border:0;color:#fff}
+.btn.outlined{background:transparent;border:1px solid rgba(255,255,255,0.08)}
+
+/* SweetAlert2 small form tweaks */
+.sw-row{display:flex;flex-direction:column;align-items:flex-start;margin-bottom:8px}
+.sw-row label{font-size:13px;color:var(--muted);margin-bottom:6px}
+.swal2-html-container .swal2-input{width:100%;padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:var(--text)}
+.swal2-html-container .sw-row .swal2-input::placeholder{color:rgba(255,255,255,0.35)}

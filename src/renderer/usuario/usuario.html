@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Perfil</title>
+    <link rel="stylesheet" href="./usuario.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Mi Perfil</h1>
+      <div class="topbar-actions">
+        <button id="btnLogout" class="btn outlined small">Cerrar sesión</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="perfil">
+        <div class="campo"><span class="label">Usuario</span><span id="pUsuario" class="valor"></span></div>
+        <div class="campo"><span class="label">Nombre</span><span id="pNombre" class="valor"></span></div>
+        <div class="campo"><span class="label">Email</span><span id="pEmail" class="valor"></span></div>
+        <div class="campo"><span class="label">Teléfono</span><span id="pTelefono" class="valor"></span></div>
+        <div style="margin-top:18px"><button id="btnEditar" class="btn primary">Editar perfil</button></div>
+      </section>
+    </main>
+
+    <script src="./usuario.js"></script>
+  </body>
+</html>
