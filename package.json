@@ -26,5 +26,8 @@
     "electron-reload": "^2.0.0-alpha.1",
     "vite": "^7.1.12",
     "wait-on": "^9.0.1"
+  },
+  "dependencies": {
+    "pg": "^8.16.3"
   }
 }
