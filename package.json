@@ -1,0 +1,46 @@
+{
+  "name": "electron",
+  "version": "1.0.0",
+  "description": "Sistema de autenticación con Electron y PostgreSQL",
+  "main": "src/main/index.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielPuertaBernal/Electron.git"
+  },
+  "keywords": [
+    "electron",
+    "postgresql",
+    "jwt",
+    "authentication"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DanielPuertaBernal/Electron/issues"
+  },
+  "homepage": "https://github.com/DanielPuertaBernal/Electron#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "electron": "^38.4.0",
+    "electron-builder": "^26.0.12",
+    "electron-devtools-installer": "^4.0.0",
+    "electron-reload": "^2.0.0-alpha.1",
+    "vite": "^7.1.12",
+    "wait-on": "^9.0.1"
+  },
+  "dependencies": {
+    "pg": "^8.16.3",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "dotenv": "^16.3.1"
+  }
+}
